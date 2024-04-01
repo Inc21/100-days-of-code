@@ -12,13 +12,13 @@ shift = int(input("Type the shift number:\n"))
 #  takes the 'text' and 'shift' as inputs.
 
 
-def encrypt(text, shift):
-    encrypted_text = ""
-    for letter in text:
-        position = alphabet.index(letter)
-        new_position = position + shift
-        encrypted_text += alphabet[new_position]
-    print(f"The encoded text is {encrypted_text}")
+# def encrypt(text, shift):
+#     encrypted_text = ""
+#     for letter in text:
+#         position = alphabet.index(letter)
+#         new_position = position + shift
+#         encrypted_text += alphabet[new_position]
+#     print(f"The encoded text is {encrypted_text}")
 
 #  TODO-2: Inside the 'encrypt' function, shift each letter of the 'text'
 #  forwards in the alphabet by the shift amount and print the encrypted text.
@@ -52,13 +52,13 @@ def encrypt(text, shift):
 #  print output: "The decoded text is hello"
 
 
-def decrypt(text, shift):
-    decrypted_text = ""
-    for letter in text:
-        position = alphabet.index(letter)
-        new_position = position - shift
-        decrypted_text += alphabet[new_position]
-    print(f"The decoded text is {decrypted_text}")
+# def decrypt(text, shift):
+#     decrypted_text = ""
+#     for letter in text:
+#         position = alphabet.index(letter)
+#         new_position = position - shift
+#         decrypted_text += alphabet[new_position]
+#     print(f"The decoded text is {decrypted_text}")
 
 
 #  TODO-3: Check if the user wanted to encrypt or decrypt the message by
@@ -66,7 +66,28 @@ def decrypt(text, shift):
 #  that 'direction' variable. You should be able to test the code to encrypt
 #  *AND* decrypt a message.
 
-if direction == "encode":
-    encrypt(text, shift)
-elif direction == "decode":
-    decrypt(text, shift)
+# if direction == "encode":
+#     encrypt(text, shift)
+# elif direction == "decode":
+#     decrypt(text, shift)
+
+
+#  TODO-1: Combine the encrypt() and decrypt() functions into a single
+#  function called caesar().
+
+
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    if cipher_direction == "decode":
+        shift_amount *= -1
+    for letter in start_text:
+        position = alphabet.index(letter)
+        new_position = position + shift_amount
+        end_text += alphabet[new_position]
+    print(f"The {cipher_direction}d text is {end_text}")
+
+#  TODO-2: Call the caesar() function, passing over the 'text', 'shift' and
+#  'direction' values.
+
+
+caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
